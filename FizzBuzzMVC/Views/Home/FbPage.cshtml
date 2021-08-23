@@ -1,0 +1,56 @@
+﻿@model FizzBuzzMVC.Models.FizzBuzz;
+
+<div class="container mt-4 py-5 mt-5">
+    <div class="row row-cols-1 row-cols-md-2 gy-2">
+        <div class="col border-end border-2">
+            <h3 class="fw-bold lh-1 mb-3">FizzBuzz</h3>
+            <h4 class="lead">
+                This application will consider the two numbers entered and for each number between 1 and 100 will print "FIZZ" (for numbers divisible by the first number),
+                "BUZZ" (for numbers divisible by the second number) and "FIZZBUZZ" (for numbers divisible by the first number and the second number). If the number is not divisible by any of input values, the number itself will be printed.
+            </h4>
+            <h2 class="mt-5 border-bottom border-2">Instructions</h2>
+            <p class="text-muted">
+                Enter 2 numbers. The first number will be used to evaluate Fizz. The second number will be used to evaluate Buzz. FizzBuzz will be determined based on the combination of the two numbers.
+            </p>
+        </div>
+        <div class="col mt-4 mt-md-0">
+            <div>
+                <h5 class="mt-1">Enter FizzBuzz Values</h5>
+                @* Form goes here *@
+                <form asp-controller="Home" asp-action="FbPage" method="post" class="row gx-2 mb-4">
+                    <div class="col">
+                        <input type="number"
+                               min="1"
+                               max="100"
+                               value="@Model.FizzValue"
+                               class="form-control"
+                               asp-for="FizzValue"
+                               aria-label="Fizz Value"
+                               placeholder="Fizz..."/>
+                    </div>
+                    <div class="col">
+                        <input type="number"
+                               min="1"
+                               max="100"
+                               value="@Model.BuzzValue"
+                               class="form-control"
+                               asp-for="BuzzValue"
+                               aria-label="Buzz Value"
+                               placeholder="Buzz..."/>
+                    </div>
+                    <div class="col-12 d-flex justify-content-end">
+                        <button
+                            type="submit"
+                            class="btn btn-dark font-monospace mt-2 p-2">
+                            FizzBuzz!
+                        </button>
+                    </div>
+                </form>
+                <h2 class="mt-5 border-bottom border-2">Results</h2>
+                <div class="table-responsive">
+                    @* Table goes here *@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

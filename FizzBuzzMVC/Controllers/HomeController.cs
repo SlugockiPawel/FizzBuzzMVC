@@ -31,7 +31,27 @@ namespace FizzBuzzMVC.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
+        }
+
+        [HttpGet]
+        public IActionResult FbPage()
+        {
+            FizzBuzz model = new()
+            {
+                FizzValue = 3,
+                BuzzValue = 5,
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult FbPage(FizzBuzz fizzBuzz)
+        {
+            
+            return View(fizzBuzz);
         }
     }
 }
