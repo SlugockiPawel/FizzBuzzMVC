@@ -26,7 +26,7 @@
                                class="form-control"
                                asp-for="FizzValue"
                                aria-label="Fizz Value"
-                               placeholder="Fizz..."/>
+                               placeholder="Fizz..." />
                     </div>
                     <div class="col">
                         <input type="number"
@@ -36,12 +36,11 @@
                                class="form-control"
                                asp-for="BuzzValue"
                                aria-label="Buzz Value"
-                               placeholder="Buzz..."/>
+                               placeholder="Buzz..." />
                     </div>
                     <div class="col-12 d-flex justify-content-end">
-                        <button
-                            type="submit"
-                            class="btn btn-dark font-monospace mt-2 p-2">
+                        <button type="submit"
+                                class="btn btn-dark font-monospace mt-2 p-2">
                             FizzBuzz!
                         </button>
                     </div>
@@ -49,6 +48,26 @@
                 <h2 class="mt-5 border-bottom border-2">Results</h2>
                 <div class="table-responsive">
                     @* Table goes here *@
+                    @if (@Model.Result.Count > 0)
+                    {
+                        <table class="table-responsive table table-dark table-striped table-hover text-center">
+                            <thead>
+                                <tr><th colspan="5">Fizz Buzz Results</th></tr>
+                            </thead>
+                            <tbody>
+                            @for (int i = 0; i < Model.Result.Count; i += 5)
+                            {
+                                <tr>
+                                    <td>@Model.Result[i]</td>
+                                    <td>@Model.Result[i + 1]</td>
+                                    <td>@Model.Result[i + 2]</td>
+                                    <td>@Model.Result[i + 3]</td>
+                                    <td>@Model.Result[i + 4]</td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    }
                 </div>
             </div>
         </div>
